@@ -1,0 +1,28 @@
+{
+  "version": "0.2.0",
+  "configurations": [{
+      "name": "Debug get-timezone",
+      "type": "node",
+      "request": "attach",
+      "address": "localhost",
+      "port": 5858,
+      "localRoot": "${workspaceRoot}/dist",
+      "remoteRoot": "/var/task",
+      "protocol": "inspector",
+      "stopOnEntry": false,
+      "preLaunchTask": "local-tz-debug"
+    },
+    {
+      "name": "Debug reverse",
+      "type": "node",
+      "request": "attach",
+      "address": "localhost",
+      "port": 5858,
+      "localRoot": "${workspaceRoot}/dist",
+      "remoteRoot": "/var/task",
+      "protocol": "inspector",
+      "stopOnEntry": false,
+      "preLaunchTask": "local-r-debug"
+    }
+  ]
+}

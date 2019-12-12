@@ -1,0 +1,37 @@
+{
+  "name": "camp-aws-sample",
+  "version": "1.0.0",
+  "description": "Sample AWS project",
+  "main": "app.js",
+  "author": "Kerry Shetline",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.0"
+  },
+  "scripts": {
+    "test": "mocha --require ts-node/register src/**/*.spec.ts --exit",
+    "local-r": "tsc && sam local invoke \"ReverseFunction\" --event events/event-reverse.json",
+    "local-r-debug": "tsc && sam local invoke \"ReverseFunction\" --event events/event-reverse.json -d 5858",
+    "local-tz": "tsc && sam local invoke \"GetTimezoneFunction\" --event events/event-timezone.json",
+    "local-tz-debug": "tsc && sam local invoke \"GetTimezoneFunction\" --event events/event-timezone.json -d 5858",
+    "build": "tsc && copy-node-modules . dist",
+    "package": "npm run build && sam package --template-file template.yaml --s3-bucket camp-aws-sample-bucket --output-template-file template.packaged.yaml",
+    "deploy": "sam deploy --template-file template.packaged.yaml --stack-name camp-aws-sample --region us-east-2 --capabilities CAPABILITY_IAM --parameter-overrides ProjectName=camp-aws-sample --no-fail-on-empty-changeset",
+    "package-deploy": "npm run package && npm run deploy"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.37",
+    "@types/axios": "^0.14.0",
+    "@types/chai": "^4.2.6",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.12.16",
+    "@types/request": "^2.48.3",
+    "chai": "^4.2.0",
+    "copy-node-modules": "^1.1.1",
+    "mocha": "^6.2.2",
+    "ts-node": "^8.5.4",
+    "tslint": "^5.20.1",
+    "tslint-no-unused-expression-chai": "^0.1.4",
+    "typescript": "^3.7.3"
+  }
+}
