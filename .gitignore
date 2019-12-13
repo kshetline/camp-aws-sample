@@ -129,4 +129,7 @@ $RECYCLE.BIN/
 # End of https://www.gitignore.io/api/osx,node,linux,windows
 
 dist/
+layer-cache/
+nodejs/
+nodejs.zip
 template.packaged.yaml

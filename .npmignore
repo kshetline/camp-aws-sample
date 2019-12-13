@@ -1,3 +1,6 @@
 tests/*
 dist/
+layer-cache/
+nodejs/
+nodejs.zip
 template.packaged.yaml

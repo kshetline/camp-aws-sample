@@ -8,12 +8,23 @@ Globals:
     Timeout: 30
 
 Resources:
+  SampleCommonLayer:
+    Type: AWS::Lambda::LayerVersion
+    Properties:
+      CompatibleRuntimes:
+        - nodejs12.x
+      Content: nodejs.zip
+      Description: Sample Common LayerVersion
+      LayerName: SampleCommonLayer
+
   GetTimezoneFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: dist
-      Handler: app.getTimezone
+      CodeUri: dist/get-timezone
+      Handler: get-timezone.getTimezone
       Runtime: nodejs12.x
+      Layers:
+        - !Ref SampleCommonLayer
       Events:
         GetTimezone:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
@@ -24,9 +35,11 @@ Resources:
   ReverseFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: dist
-      Handler: app.reverse
+      CodeUri: dist/reverse
+      Handler: reverse.reverse
       Runtime: nodejs12.x
+      Layers:
+        - !Ref SampleCommonLayer
       Events:
         Reverse:
           Type: Api

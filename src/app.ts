@@ -1,2 +1,2 @@
-export { getTimezone } from './get-timezone';
-export { reverse } from './reverse';
+export { getTimezone } from './get-timezone/get-timezone';
+export { reverse } from './reverse/reverse';
