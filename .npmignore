@@ -3,4 +3,5 @@ dist/
 layer-cache/
 nodejs/
 nodejs.zip
+template.local.yaml
 template.packaged.yaml

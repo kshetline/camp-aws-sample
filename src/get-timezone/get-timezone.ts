@@ -19,7 +19,7 @@ function normalize(s: string): string {
 }
 
 export async function getTimezone(event: any): Promise<any> {
-  const city = (event.queryStringParameters && event.queryStringParameters.city) || 'Chicago, IL';
+  const city = (event.queryStringParameters?.city) ?? 'Chicago, IL';
   const normalized = normalize(city);
 
   try {
