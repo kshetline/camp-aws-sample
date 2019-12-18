@@ -6,11 +6,15 @@
       "request": "attach",
       "address": "localhost",
       "port": 5858,
-      "localRoot": "${workspaceRoot}/dist",
+      "localRoot": "${workspaceRoot}/dist/get-timezone",
       "remoteRoot": "/var/task",
       "protocol": "inspector",
       "stopOnEntry": false,
-      "preLaunchTask": "local-tz-debug"
+      "preLaunchTask": "local-tz-debug",
+      "outFiles": [
+        "${workspaceRoot}/dist/get-timezone/**/*.js"
+      ],
+      "sourceMaps": true
     },
     {
       "name": "Debug reverse",
@@ -18,11 +22,15 @@
       "request": "attach",
       "address": "localhost",
       "port": 5858,
-      "localRoot": "${workspaceRoot}/dist",
+      "localRoot": "${workspaceRoot}/dist/reverse",
       "remoteRoot": "/var/task",
       "protocol": "inspector",
       "stopOnEntry": false,
-      "preLaunchTask": "local-r-debug"
+      "preLaunchTask": "local-r-debug",
+      "outFiles": [
+        "${workspaceRoot}/dist/reverse/**/*.js"
+      ],
+      "sourceMaps": true
     }
   ]
 }

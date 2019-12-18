@@ -23,6 +23,9 @@ Resources:
       CodeUri: dist/get-timezone
       Handler: get-timezone.getTimezone
       Runtime: nodejs12.x
+      Environment:
+        Variables:
+          XNODE_PATH: /opt/nodejs/node12/node_modules:/opt/nodejs/node_modules:/var/runtime/node_modules
       Layers:
         - !Ref SampleCommonLayer
       Events:
@@ -38,6 +41,9 @@ Resources:
       CodeUri: dist/reverse
       Handler: reverse.reverse
       Runtime: nodejs12.x
+      Environment:
+        Variables:
+          XNODE_PATH: /opt/nodejs/node12/node_modules:/opt/nodejs/node_modules:/var/runtime/node_modules
       Layers:
         - !Ref SampleCommonLayer
       Events:

@@ -10,11 +10,11 @@
   },
   "scripts": {
     "test": "mocha --require ts-node/register src/**/*.spec.ts --exit",
-    "local-r": "tsc && sam local invoke -t template.local.yaml -e events/event-reverse.json \"ReverseFunction\"",
-    "local-r-debug": "tsc && sam local invoke -t template.local.yaml -e events/event-reverse.json -d 5858 \"ReverseFunction\"",
-    "local-tz": "tsc && sam local invoke -t template.local.yaml -e events/event-timezone.json \"GetTimezoneFunction\"",
-    "local-tz-debug": "tsc && sam local invoke -t template.local.yaml -e events/event-timezone.json -d 5858 \"GetTimezoneFunction\"",
-    "build": "del-cli dist dist.zip dependencies && tsc && copy-node-modules . dist && copy-node-modules . dependencies/nodejs && cpy package.json dependencies/nodejs && cd dependencies && bestzip ../nodejs.zip nodejs && cd .. && cpy template.yaml --rename template.local.yaml . && replace nodejs.zip dependencies --silent template.local.yaml",
+    "local-r": "tsc && sam local invoke -t template.local.yaml -e events/event-reverse.json ReverseFunction",
+    "local-r-debug": "tsc && sam local invoke -t template.local.yaml -e events/event-reverse.json -d 5858 ReverseFunction",
+    "local-tz": "tsc && sam local invoke -t template.local.yaml -e events/event-timezone.json GetTimezoneFunction",
+    "local-tz-debug": "tsc && sam local invoke -t template.local.yaml -e events/event-timezone.json -d 5858 GetTimezoneFunction",
+    "build": "del-cli dist dist.zip dependencies && tsc && copy-node-modules . dist && copy-node-modules . dependencies/nodejs && cpy package.json dependencies/nodejs && cd dependencies && bestzip ../nodejs.zip nodejs && cd .. && cpy template.yaml --rename template.local.yaml . && replace nodejs.zip dependencies --silent template.local.yaml && replace XNODE_PATH NODE_PATH --silent template.local.yaml",
     "package": "npm run build && sam package --template-file template.yaml --s3-bucket camp-aws-sample-bucket --output-template-file template.packaged.yaml",
     "deploy": "sam deploy --template-file template.packaged.yaml --stack-name camp-aws-sample --region us-east-2 --capabilities CAPABILITY_IAM --parameter-overrides ProjectName=camp-aws-sample --no-fail-on-empty-changeset",
     "package-deploy": "npm run package && npm run deploy"
